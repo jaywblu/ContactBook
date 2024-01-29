@@ -1,6 +1,6 @@
-﻿using ContactBook.Enums;
+﻿using ContactBook.Shared.Enums;
 
-namespace ContactBook.Interfaces
+namespace ContactBook.Shared.Interfaces
 {
     public interface IServiceResponse
     {

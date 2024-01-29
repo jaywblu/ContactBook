@@ -1,8 +1,8 @@
-﻿using ContactBook.Enums;
-using ContactBook.Interfaces;
-using ContactBook.Models;
-using ContactBook.Repositories;
-using ContactBook.Services;
+﻿using ContactBook.Shared.Enums;
+using ContactBook.Shared.Interfaces;
+using ContactBook.Shared.Models;
+using ContactBook.Shared.Repositories;
+using ContactBook.Shared.Services;
 using Moq;
 using Newtonsoft.Json;
 

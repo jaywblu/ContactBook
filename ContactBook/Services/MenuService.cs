@@ -1,6 +1,6 @@
-﻿using ContactBook.Interfaces;
-using ContactBook.Models;
-using ContactBook.Repositories;
+﻿using ContactBook.Shared.Interfaces;
+using ContactBook.Shared.Models;
+using ContactBook.Shared.Enums;
 using System.Reflection;
 
 namespace ContactBook.Services;
@@ -70,8 +70,6 @@ public class MenuService : IMenuService
 
     private void Show_AddContactOption()
     {
-        //IPerson contact = new Person();
-
         DisplayMenuTitle("Add a new comtact");
         IPerson contact = EnterContactInformation();
 
@@ -79,7 +77,7 @@ public class MenuService : IMenuService
 
         switch (response.Status)
         {
-            case Enums.ServiceStatus.SUCCESS:
+            case ServiceStatus.SUCCESS:
                 Console.Clear();
                 Console.WriteLine("The contact was added successfully with the following information.\n");
 
@@ -101,10 +99,10 @@ public class MenuService : IMenuService
                     }
                 }
                 break;
-            case Enums.ServiceStatus.ALREADY_EXISTS:
+            case ServiceStatus.ALREADY_EXISTS:
                 Console.WriteLine($"\nA contact with e-mail adress {contact.Email} already exists:");
                 break;
-            case Enums.ServiceStatus.FAILED:
+            case ServiceStatus.FAILED:
             default:
                 Console.WriteLine("An error occured with the following error message.");
                 Console.WriteLine(response.Result.ToString());
@@ -124,7 +122,7 @@ public class MenuService : IMenuService
 
         switch (response.Status)
         {
-            case Enums.ServiceStatus.SUCCESS:
+            case ServiceStatus.SUCCESS:
                 Console.Clear();
                 Console.WriteLine("\nFound a contact with the provided email address:\n");
                 if (response.Result is IPerson foundContact)
@@ -147,56 +145,14 @@ public class MenuService : IMenuService
                     }
                 }
                 break;
-            case Enums.ServiceStatus.NOT_FOUND:
+            case ServiceStatus.NOT_FOUND:
                 Console.WriteLine("No match found with the provided email address.");
                 break;
-            case Enums.ServiceStatus.FAILED:
+            case ServiceStatus.FAILED:
                 Console.WriteLine("An error occurred witth the following error message:");
                 Console.WriteLine(response.Result.ToString());
                 break;
         }
-
-        //Console.Write("\nSearch for available contacts: ");
-        //var searchString = Console.ReadLine()!;
-        //string propertyName = null!;
-        //IServiceResponse contactList = _contactRepository.GetAllContacts();
-
-        //if (contactList.Result is List<IPerson> allContacts)
-        //{
-        //    foreach (IPerson contact in allContacts)
-        //    {
-        //        foreach (PropertyInfo prop in contact.GetType().GetProperties())
-        //        {
-        //            var value = prop.GetValue(contact, null);
-        //            if (contact.Address is IAddress && prop.Name.ToString() == "Address")
-        //            {
-        //                foreach (PropertyInfo addressProp in contact.Address.GetType().GetProperties())
-        //                {
-        //                    value = addressProp.GetValue(contact.Address, null);
-        //                    if (value!.ToString()!.Contains(searchString))
-        //                    {
-        //                        propertyName = addressProp.Name;
-        //                        break;
-        //                    }
-        //                }
-        //            } else if (value!.ToString()!.Contains(searchString))
-        //            {
-        //                propertyName = prop.Name;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //if (!string.IsNullOrEmpty(propertyName))
-        //{
-        //    Console.WriteLine(propertyName);
-        //    IServiceResponse response = _contactRepository.GetContactFromList((x) => x[propertyName]);
-        //}
-        //else
-        //{
-        //    Console.WriteLine("No macthes were found.");
-        //}
 
         Console.WriteLine("\nPress any key to return to main menu.");
         Console.ReadKey();
@@ -211,16 +167,16 @@ public class MenuService : IMenuService
 
         switch (response.Status)
         {
-            case Enums.ServiceStatus.DELETED:
+            case ServiceStatus.DELETED:
                 if (response.Result is IPerson contact)
                 {
                     Console.WriteLine($"Contact {contact.FirstName} {contact.LastName} was deleted.");
                 }
                 break;
-            case Enums.ServiceStatus.NOT_FOUND:
+            case ServiceStatus.NOT_FOUND:
                 Console.WriteLine($"Could not find a contact with the email address {emailToRemove}");
                 break;
-            case Enums.ServiceStatus.FAILED:
+            case ServiceStatus.FAILED:
             default:
                 Console.WriteLine("An error occurred witth the following error message:");
                 Console.WriteLine(response.Result.ToString());
@@ -237,7 +193,7 @@ public class MenuService : IMenuService
         DisplayMenuTitle("All contacts:");
         IServiceResponse response = _contactRepository.GetAllContacts();
 
-        if (response.Status == Enums.ServiceStatus.SUCCESS)
+        if (response.Status == ServiceStatus.SUCCESS)
         {
             if (response.Result is List<IPerson> contactList && contactList.Any())
             {
@@ -292,7 +248,7 @@ public class MenuService : IMenuService
 
         switch (response.Status)
         {
-            case Enums.ServiceStatus.SUCCESS:
+            case ServiceStatus.SUCCESS:
                 Console.Clear();
                 Console.WriteLine("\nFound a contact with the provided email address:\n");
                 if (response.Result is IPerson foundContact)
@@ -322,10 +278,10 @@ public class MenuService : IMenuService
                     }
                 }
                 break;
-            case Enums.ServiceStatus.NOT_FOUND:
+            case ServiceStatus.NOT_FOUND:
                 Console.WriteLine("No match found with the provided email address.");
                 break;
-            case Enums.ServiceStatus.FAILED:
+            case ServiceStatus.FAILED:
                 Console.WriteLine("An error occurred witth the following error message:");
                 Console.WriteLine(response.Result.ToString());
                 break;
@@ -372,7 +328,7 @@ public class MenuService : IMenuService
 
         switch (response.Status)
         {
-            case Enums.ServiceStatus.UPDATED:
+            case ServiceStatus.UPDATED:
                 Console.Clear();
                 Console.WriteLine("The contact was updated with the following infromation:");
                 if (response.Result is IPerson newContact)
@@ -393,10 +349,10 @@ public class MenuService : IMenuService
                     }
                 }
                 break;
-            case Enums.ServiceStatus.ALREADY_EXISTS:
+            case ServiceStatus.ALREADY_EXISTS:
                 Console.WriteLine($"\nA contact with e-mail adress {newContactData.Email} already exists:");
                 break;
-            case Enums.ServiceStatus.FAILED:
+            case ServiceStatus.FAILED:
             default:
                 Console.WriteLine("An error occured with the following error message.");
                 Console.WriteLine(response.Result.ToString());

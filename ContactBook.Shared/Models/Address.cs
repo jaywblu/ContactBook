@@ -1,6 +1,6 @@
-﻿using ContactBook.Interfaces;
+﻿using ContactBook.Shared.Interfaces;
 
-namespace ContactBook.Models;
+namespace ContactBook.Shared.Models;
 
 public class Address : IAddress
 {

@@ -1,4 +1,4 @@
-﻿namespace ContactBook.Enums;
+﻿namespace ContactBook.Shared.Enums;
 
 public enum ServiceStatus
 {

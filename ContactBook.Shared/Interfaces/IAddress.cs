@@ -1,4 +1,4 @@
-﻿namespace ContactBook.Interfaces
+﻿namespace ContactBook.Shared.Interfaces
 {
     public interface IAddress
     {

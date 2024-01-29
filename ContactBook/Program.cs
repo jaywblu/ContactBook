@@ -1,5 +1,6 @@
-﻿using ContactBook.Interfaces;
-using ContactBook.Repositories;
+﻿using ContactBook.Shared.Interfaces;
+using ContactBook.Shared.Repositories;
+using ContactBook.Shared.Services;
 using ContactBook.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

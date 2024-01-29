@@ -1,0 +1,20 @@
+[
+  {
+    "$type": "ContactBook.Shared.Models.Person, ContactBook.Shared",
+    "Id": "e183802f-1663-4e70-b808-14bb0aa2afb9",
+    "FirstName": "Jacob",
+    "LastName": "Sjögren",
+    "PhoneNumber": "019327",
+    "Email": "jacob@domain.com",
+    "Address": null
+  },
+  {
+    "$type": "ContactBook.Shared.Models.Person, ContactBook.Shared",
+    "Id": "878eed95-5d14-4608-86df-5c2b629a5a74",
+    "FirstName": "Test",
+    "LastName": "Testman",
+    "PhoneNumber": "02929827",
+    "Email": "test@domain.com",
+    "Address": null
+  }
+]

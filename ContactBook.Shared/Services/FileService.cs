@@ -1,12 +1,7 @@
-﻿using System.Diagnostics;
+﻿using ContactBook.Shared.Interfaces;
+using System.Diagnostics;
 
-namespace ContactBook.Services;
-
-public interface IFileService
-{
-    bool SaveContentToFile(string filePath, string content);
-    string GetContentFromFile(string filePath);
-}
+namespace ContactBook.Shared.Services;
 
 public class FileService() : IFileService
 {
