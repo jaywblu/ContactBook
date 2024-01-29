@@ -1,0 +1,28 @@
+[
+  {
+    "$type": "ContactBook.Models.Person, ContactBook",
+    "Id": "4d888ebc-7389-4f04-ac94-8ab83d35f3c7",
+    "FirstName": "jsjdu",
+    "LastName": "kdid",
+    "PhoneNumber": "01028",
+    "Email": "029383",
+    "Address": null
+  },
+  {
+    "$type": "ContactBook.Models.Person, ContactBook",
+    "Id": "a16563bb-8b32-4157-a32a-9fa66f2a84a2",
+    "FirstName": "Jacob",
+    "LastName": "Sjögren",
+    "PhoneNumber": "123456",
+    "Email": "jacob@domain.com",
+    "Address": {
+      "$type": "ContactBook.Models.Address, ContactBook",
+      "AddressLine1": "Gatan 12",
+      "AddressLine2": "",
+      "City": "Gävle",
+      "Region": "",
+      "PostalCode": 29387,
+      "Country": "Sweden"
+    }
+  }
+]
