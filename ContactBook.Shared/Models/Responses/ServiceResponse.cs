@@ -1,7 +1,7 @@
-﻿using ContactBook.Enums;
-using ContactBook.Interfaces;
+﻿using ContactBook.Shared.Enums;
+using ContactBook.Shared.Interfaces;
 
-namespace ContactBook.Models.Responses;
+namespace ContactBook.Shared.Models.Responses;
 
 public class ServiceResponse : IServiceResponse
 {

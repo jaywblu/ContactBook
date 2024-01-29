@@ -1,19 +1,17 @@
-﻿using ContactBook.Enums;
-using ContactBook.Interfaces;
-using ContactBook.Models;
-using ContactBook.Models.Responses;
-using ContactBook.Services;
+﻿using ContactBook.Shared.Enums;
+using ContactBook.Shared.Interfaces;
+using ContactBook.Shared.Models.Responses;
 using Newtonsoft.Json;
 using System.Diagnostics;
 
-namespace ContactBook.Repositories;
+namespace ContactBook.Shared.Repositories;
 
 public class ContactRepository : IContactRepository
 {
     private IFileService _fileService;
     private static List<IPerson> _contactList = [];
     private static readonly string _currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-    private static readonly string _file = Path.Combine(_currentDirectory, @"..\..\..\content.json");
+    private static readonly string _file = Path.Combine(_currentDirectory, @"..\..\..\..\content.json");
     private static readonly string _filePath = Path.GetFullPath(_file);
 
     public ContactRepository(IFileService fileService)
