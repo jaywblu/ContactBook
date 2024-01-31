@@ -5,7 +5,11 @@ namespace ContactBook.Shared.Services;
 
 public class FileService() : IFileService
 {
-
+    /// <summary>
+    /// Retrieves content from specified filepath
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <returns>String</returns>
     public string GetContentFromFile(string filePath)
     {
         try
@@ -20,6 +24,12 @@ public class FileService() : IFileService
         return null!;
     }
 
+    /// <summary>
+    /// Saves content to specified filepath
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <param name="content"></param>
+    /// <returns>Boolean</returns>
     public bool SaveContentToFile(string filePath, string content)
     {
         try

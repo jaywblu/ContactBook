@@ -1,20 +1,36 @@
 [
   {
     "$type": "ContactBook.Shared.Models.Person, ContactBook.Shared",
-    "Id": "e183802f-1663-4e70-b808-14bb0aa2afb9",
+    "Id": "00000000-0000-0000-0000-000000000000",
     "FirstName": "Jacob",
     "LastName": "Sjögren",
-    "PhoneNumber": "019327",
+    "PhoneNumber": "019237",
     "Email": "jacob@domain.com",
-    "Address": null
+    "Address": {
+      "$type": "ContactBook.Shared.Models.Address, ContactBook.Shared",
+      "AddressLine1": "Gatuvägen 12",
+      "AddressLine2": null,
+      "City": "Staden",
+      "Region": null,
+      "PostalCode": 12345,
+      "Country": "Landet"
+    }
   },
   {
     "$type": "ContactBook.Shared.Models.Person, ContactBook.Shared",
-    "Id": "878eed95-5d14-4608-86df-5c2b629a5a74",
-    "FirstName": "Test",
+    "Id": "dce125d0-ab83-4099-9972-3c16e40fa6f2",
+    "FirstName": "Testare",
     "LastName": "Testman",
-    "PhoneNumber": "02929827",
+    "PhoneNumber": "0192837",
     "Email": "test@domain.com",
-    "Address": null
+    "Address": {
+      "$type": "ContactBook.Shared.Models.Address, ContactBook.Shared",
+      "AddressLine1": "Testmakargatan 9",
+      "AddressLine2": "",
+      "City": "Testviken",
+      "Region": "",
+      "PostalCode": 9876,
+      "Country": "Testmenistan"
+    }
   }
 ]

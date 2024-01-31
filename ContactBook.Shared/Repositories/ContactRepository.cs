@@ -14,12 +14,21 @@ public class ContactRepository : IContactRepository
     private static readonly string _file = Path.Combine(_currentDirectory, @"..\..\..\..\content.json");
     private static readonly string _filePath = Path.GetFullPath(_file);
 
+    /// <summary>
+    /// Constructor for ContactRepository
+    /// </summary>
+    /// <param name="fileService"></param>
     public ContactRepository(IFileService fileService)
     {
         _fileService = fileService;
         GetContactsFromFile();
     }
 
+    /// <summary>
+    /// Adds a new contact to list
+    /// </summary>
+    /// <param name="person"></param>
+    /// <returns>A ServiceResponse containing a status message and a Person object</returns>
     public IServiceResponse AddContactToList(IPerson person)
     {
         IServiceResponse response = new ServiceResponse();
@@ -49,6 +58,11 @@ public class ContactRepository : IContactRepository
         return response;
     }
 
+    /// <summary>
+    /// Removes an existing contact by callback function
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <returns>A ServiceResponse containing a status message and a Person object</returns>
     public IServiceResponse DeleteContactFromList(Func<IPerson, bool> condition)
     {
         IServiceResponse response = new ServiceResponse();
@@ -79,6 +93,10 @@ public class ContactRepository : IContactRepository
         return response;
     }
 
+    /// <summary>
+    /// Retrieves all existing contacts in list
+    /// </summary>
+    /// <returns>A ServiceResponse containing a status message and a Person List</returns>
     public IServiceResponse GetAllContacts()
     {
         IServiceResponse response = new ServiceResponse();
@@ -99,6 +117,11 @@ public class ContactRepository : IContactRepository
         return response;
     }
 
+    /// <summary>
+    /// Retrieves a single contact by callback function
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <returns>A ServiceResponse containing a status message and a Person object</returns>
     public IServiceResponse GetContactFromList(Func<IPerson, bool> condition)
     {
         IServiceResponse response = new ServiceResponse();
@@ -127,6 +150,12 @@ public class ContactRepository : IContactRepository
         return response;
     }
 
+    /// <summary>
+    /// Updates an existing contact
+    /// </summary>
+    /// <param name="newContact"></param>
+    /// <param name="oldContact"></param>
+    /// <returns>A ServiceResponse containing a status message and a Person object</returns>
     public IServiceResponse UpdateContact(IPerson newContact, IPerson oldContact)
     {
         GetContactsFromFile();
@@ -163,6 +192,10 @@ public class ContactRepository : IContactRepository
         return response;
     }
 
+    /// <summary>
+    /// Populates contacts list from file
+    /// </summary>
+    /// <returns>An IEnumerable of Person objects</returns>
     private IEnumerable<IPerson> GetContactsFromFile()
     {
         try
@@ -182,6 +215,9 @@ public class ContactRepository : IContactRepository
         return _contactList;
     }
 
+    /// <summary>
+    /// Saves all contacts in list to file
+    /// </summary>
     private void SaveContactsToFile()
     {
         _fileService.SaveContentToFile(_filePath, JsonConvert.SerializeObject(_contactList, new JsonSerializerSettings

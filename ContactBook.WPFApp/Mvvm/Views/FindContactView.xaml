@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="ContactBook.WPFApp.Mvvm.Views.FindContactView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContactBook.WPFApp.Mvvm.Views"
+             xmlns:viewmodels="clr-namespace:ContactBook.WPFApp.Mvvm.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:FindContactViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="0">
+            <Label Content="Find Contact" FontSize="24" Margin="0, 0, 0, 24"/>
+            <Button Content="Back to Menu" Margin="0, 0, 0, 24" Padding="48, 6" Command="{Binding NavTo_MainMenuCommand}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="6">
+                    <TextBlock Text="Type in the e-mail of the contact you wish to find:"/>
+                    <Label Content="E-mail" />
+                    <TextBox Text="{Binding Email}" Padding="2, 6"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="6" VerticalAlignment="Bottom">
+                    <Button  Margin="0, 24, 0, 0" Content="Find" Padding="48, 6" MaxWidth="120"
+                        Command="{Binding FindContactCommand}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Row="2" Margin="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" MinWidth="240"/>
+                <ColumnDefinition Width="*" MinWidth="240"/>
+                <ColumnDefinition Width="auto" MinWidth="240"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock FontWeight="Bold">
+            <Run Text="{Binding Contact.FirstName}"/>
+            <Run Text=""/>
+            <Run Text="{Binding Contact.LastName}"/>
+                </TextBlock>
+                <TextBlock Text="Phone #:"/>
+                <TextBlock Text="E-mail:"/>
+                <TextBlock Text="Address:"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text=""/>
+                <TextBlock Text="{Binding Contact.PhoneNumber}"/>
+                <TextBlock Text="{Binding Contact.Email}"/>
+                <TextBlock Text="{Binding Contact.Address.AddressLine1}"/>
+                <TextBlock Text="{Binding Contact.Address.AddressLine2}"/>
+                <TextBlock Text="{Binding Contact.Address.PostalCode}"/>
+                <TextBlock Text="{Binding Contact.Address.Region}"/>
+                <TextBlock Text="{Binding Contact.Address.City}"/>
+                <TextBlock Text="{Binding Contact.Address.Country}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Button Content="Edit" MaxWidth="120" Margin="0, 12, 0, 24" Padding="12, 6"
+                    Command="{Binding NavTo_EditContactCommand}"/>
+                <Button Content="Remove" MaxWidth="120" Padding="12, 6"
+                    Command="{Binding RemoveContactCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

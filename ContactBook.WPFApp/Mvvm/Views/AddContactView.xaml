@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="ContactBook.WPFApp.Mvvm.Views.AddContactView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContactBook.WPFApp.Mvvm.Views"
+             xmlns:viewmodels="clr-namespace:ContactBook.WPFApp.Mvvm.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AddContactViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="0">
+            <Label Content="Add Contact" FontSize="24" Margin="0, 0, 0, 24"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="6">
+                    <Label Content="First name" />
+                    <TextBox Text="{Binding Contact.FirstName}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                    <Label Content="Phone #" />
+                    <TextBox Text="{Binding Contact.PhoneNumber}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="6">
+                    <Label Content="Last name" />
+                    <TextBox Text="{Binding Contact.LastName}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                    <Label Content="E-mail" />
+                    <TextBox Text="{Binding Contact.Email}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <TextBlock Margin="6" Grid.Row="2" Text="Address is optional. If you include it, all fields with * are required." FontStyle="Italic"/>
+        <StackPanel Grid.Row="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="6">
+                    <Label Content="Address Line 1 *" />
+                    <TextBox Text="{Binding Address.AddressLine1}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                    <Label Content="Address Line 2" />
+                    <TextBox Text="{Binding Address.AddressLine2}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                    <Label Content="Postal Code *" />
+                    <TextBox Text="{Binding Address.PostalCode}" PreviewTextInput="NumberValidationTextBox" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="6">
+                    <Label Content="City *" />
+                    <TextBox Text="{Binding Address.City}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                    <Label Content="Region" />
+                    <TextBox Text="{Binding Address.Region}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                    <Label Content="Country *" />
+                    <TextBox Text="{Binding Address.Country}" Padding="2, 6" Margin="0, 0, 0, 6"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button  Margin="0, 24, 0, 0" Content="Save" Padding="48, 6"
+                Command="{Binding SaveContactCommand}"/>
+            <Button  Margin="24, 24, 0, 0" Content="Cancel" Padding="48, 6"
+                Command="{Binding NavTo_MainMenuViewCommand}"/>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
